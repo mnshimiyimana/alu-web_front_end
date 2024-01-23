@@ -1,0 +1,13 @@
+// Define a mixin for setting margin left and right
+@mixin setMarginLR($margin) {
+    margin-left: $margin;
+    margin-right: $margin;
+  }
+  
+  body {
+    @include setMarginLR(10px);
+  }
+  
+  div {
+    @include setMarginLR(15px);
+  }
