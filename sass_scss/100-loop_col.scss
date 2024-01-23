@@ -1,0 +1,11 @@
+$total-columns: 4;
+
+$prefix: "col-";
+
+$column-widths: 100%, 50%, 33.3333333333%, 25%;
+
+@for $i from 1 through $total-columns {
+  .#{$prefix}#{$i} {
+    width: nth($column-widths, $i);
+  }
+}
