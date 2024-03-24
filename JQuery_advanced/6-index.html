@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<title>Val, before, and prepend functions</title>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script type="application/javascript">
+  // Function to create the family tree table
+  function createFamilyTree() {
+    $("body").append(
+      "<table><thead><tr><th>Firstname</th><th>Lastname</th></tr></thead><tbody></tbody></table>"
+    );
+  }
+
+  // Function to add a new member to the family tree
+  function addNewMember(firstName, lastName, position) {
+    var newRow = "<tr><td>" + firstName + "</td><td>" + lastName + "</td><td>(x)</td></tr>";
+    if (position === "before") {
+      $("tbody").prepend(newRow);
+    } else {
+      $("tbody").append(newRow);
+    }
+  }
+
+  // Function to create the form for adding new members
+  function createForm() {
+    $("table").before(
+      "<input type='text' id='firstNameInput' placeholder='First Name'>" +
+      "<input type='text' id='lastNameInput' placeholder='Last Name'>" +
+      "<select id='positionSelect'>" +
+      "<option value='before'>Before</option>" +
+      "<option value='after'>After</option>" +
+      "</select>" +
+      "<input type='submit' id='submitBtn' value='Add Member'>"
+    );
+
+    
+    $("#submitBtn").click(function () {
+      var firstName = $("#firstNameInput").val();
+      var lastName = $("#lastNameInput").val();
+      var position = $("#positionSelect").val();
+      addNewMember(firstName, lastName, position);
+    });
+  }
+
+  
+  $(document).ready(function () {
+    createFamilyTree();
+    createForm();
+  });
+
+</script>
+<style>
+  td {
+    padding: 8px;
+  }
+</style>
+</head>
+<body></body>
+</html>

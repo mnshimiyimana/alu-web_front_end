@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Click attribute and remove function</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/javascript">
+      // Function to create the family tree table
+      function createFamilyTree() {
+        $("body").append(
+          "<table><thead><tr><th>Firstname</th><th>Lastname</th></tr></thead><tbody></tbody></table>"
+        );
+      }
+
+      // Function to add a new member to the family tree
+      function addNewMember(firstName, lastName) {
+        $("tbody").append(
+          "<tr><td>" + firstName + "</td><td>" + lastName + "</td><td>(x)</td></tr>"
+        );
+      }
+
+      $(document).ready(function () {
+        createFamilyTree();
+
+        addNewMember("Guillaume", "Salva");
+        addNewMember("Arielle", "Snizt");
+        addNewMember("Fanette", "Snizt");
+        addNewMember("Gerard", "Snizt");
+        addNewMember("Victor", "Salva");
+
+        $("body").on("click", "td:nth-child(3)", function () {
+          $(this).closest("tr").remove();
+        });
+
+        $("td:nth-child(3)").css("background-color", "orange");
+      });
+    </script>
+    <style>
+      td {
+        padding: 8px;
+      }
+    </style>
+  </head>
+
+  <body></body>
+</html>
